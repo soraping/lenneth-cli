@@ -3,7 +3,14 @@ const { Signale } = require("signale");
 
 const options = {
   stream: process.stdout,
-  scope: "lenneth"
+  scope: "lenneth",
+  types: {
+    debug: {
+      badge: "!",
+      color: "cyan",
+      label: "debug"
+    }
+  }
 };
 
 const log = new Signale(options);
