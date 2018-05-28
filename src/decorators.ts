@@ -3,7 +3,7 @@
  * @return 新建项目全路径
  */
 import { LennethCliError, ErrorCode } from "./error";
-import { directoryIsOnly } from "./utils";
+import { directoryIsOnly, path_resolve } from "./utils";
 import { logger } from "./log";
 export const ValidProjectName = (): Function => {
   return (
@@ -33,11 +33,9 @@ export const ValidProjectName = (): Function => {
         });
       }
       logger.info(
-        `工程目录名称有效，正在工作目录下创建新项目 => ${projectName}`
+        `工程目录名称有效，正在工作目录下创建新工程 => ${projectName}`
       );
-      logger.info(`新建工程目录全路径 => ${directoryIsOnly(projectName)}`);
-      // 参数重置
-      arguments[0] = directoryIsOnly(projectName);
+      logger.info(`新建工程目录全路径 => ${path_resolve(projectName)}`);
       return oldValue.apply(this, arguments);
     };
     return descriptor;

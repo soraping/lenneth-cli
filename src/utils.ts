@@ -20,5 +20,13 @@ export const directoryIsOnly = projectName => {
     }
     cwd = projectName;
   }
-  return path.resolve(process.cwd(), cwd);
+  return cwd;
+};
+
+/**
+ * 返回工程目录全路径
+ * @param projectName
+ */
+export const path_resolve = (projectName: string) => {
+  return path.resolve(process.cwd(), projectName);
 };

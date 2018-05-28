@@ -1,13 +1,13 @@
 /**
  * 初始化类
  */
-import { resolve, basename } from "path";
 import * as download from "git-downloader";
 import * as ora from "ora";
 import * as inquirer from "inquirer";
 import { logger } from "./log";
 import { ValidProjectName } from "./decorators";
 import { LennethCliError, ErrorCode } from "./error";
+import { path_resolve } from "./utils";
 
 interface IProjectInfo {
   projectName?: string;
@@ -18,16 +18,15 @@ interface IProjectInfo {
 export class LennethCliInit {
   /**
    * 创建项目名称
-   * @param project 项目路径
    */
   @ValidProjectName()
-  async createProjectName(project: string) {
+  async createProjectName(projectName: string) {
     //创建目录
     try {
-      await this.downGitTemplate(project);
+      await this.downGitTemplate(projectName);
       // 获取交互数据
-      let projectInfo = await this.inquirerShell(basename(project));
-      console.log(projectInfo);
+      let projectInfo = await this.inquirerShell(projectName);
+      await this.generatorTemplate(projectInfo);
     } catch (e) {
       logger.error(e);
     }
@@ -35,17 +34,19 @@ export class LennethCliInit {
 
   /**
    * 下载git模版
-   * @param project 项目路径
+   * @param project 工程
    */
-  async downGitTemplate(project: string) {
+  async downGitTemplate(projectName: string) {
     const templateUrl = "https://github.com/soraping/lenneth-demo.git";
     const spinner = ora(`下载模版项目git地址 => ${templateUrl}`);
     spinner.start();
     return new Promise((resolve, reject) => {
-      download({ source: templateUrl, destination: project })
+      download({ source: templateUrl, destination: projectName })
         .then(() => {
           spinner.succeed();
-          logger.success(`工程模版下载成功, 文件夹路径 => ${project}`);
+          logger.success(
+            `工程模版下载成功，路径 => ${path_resolve(projectName)}`
+          );
           resolve(1);
         })
         .catch(e => {
@@ -84,4 +85,10 @@ export class LennethCliInit {
         });
     });
   }
+
+  /**
+   * 生成模版
+   * @param projectInfo
+   */
+  async generatorTemplate(projectInfo: IProjectInfo) {}
 }
