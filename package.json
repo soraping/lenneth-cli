@@ -1,8 +1,8 @@
 {
   "name": "lenneth-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "client for lenneth",
-  "main": "index",
+  "main": "lenneth",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "yarn clean && npx tsc",
@@ -15,13 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/soraping/lenneth-cli.git"
   },
-  "keywords": [
-    "lenneth",
-    "lenneth-cli",
-    "typescript",
-    "node",
-    "koa2"
-  ],
+  "keywords": ["lenneth", "lenneth-cli", "typescript", "node", "koa2"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/soraping/lenneth-cli/issues"
