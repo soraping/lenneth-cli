@@ -1,6 +1,6 @@
 {
   "name": "lenneth-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "client for lenneth",
   "main": "lenneth",
   "scripts": {
@@ -15,7 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/soraping/lenneth-cli.git"
   },
-  "keywords": ["lenneth", "lenneth-cli", "typescript", "node", "koa2"],
+  "keywords": [
+    "lenneth",
+    "lenneth-cli",
+    "typescript",
+    "node",
+    "koa2"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/soraping/lenneth-cli/issues"
@@ -23,6 +29,7 @@
   "homepage": "https://github.com/soraping/lenneth-cli#readme",
   "dependencies": {
     "chalk": "^2.4.1",
+    "commander": "^2.15.1",
     "git-downloader": "^1.0.0",
     "glob": "^7.1.2",
     "handlebars": "^4.0.11",
@@ -32,8 +39,7 @@
     "minimatch": "^3.0.4",
     "ora": "^2.1.0",
     "signale": "^1.1.0",
-    "tslib": "^1.9.1",
-    "yargs": "^11.0.0"
+    "tslib": "^1.9.1"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -44,7 +50,6 @@
     "@types/minimatch": "^3.0.3",
     "@types/node": "^10.1.2",
     "@types/ora": "^1.3.4",
-    "@types/yargs": "^11.0.0",
     "typescript": "^2.8.3"
   },
   "engines": {
