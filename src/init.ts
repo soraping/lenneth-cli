@@ -45,7 +45,7 @@ export class LennethCliInit {
    * @param project 工程
    */
   async downGitTemplate(projectName: string) {
-    const templateUrl = "https://git.coding.net/soraping/lenneth-template.git";
+    const templateUrl = "https://e.coding.net/soraping/lenneth-template.git";
     const spinner = Ora(`下载模版项目git地址 => ${templateUrl}`);
     spinner.start();
     return new Promise((resolve, reject) => {
